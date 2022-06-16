@@ -1,0 +1,30 @@
+version: "3.7"
+
+services:
+  database:
+    image: mysql
+    container_name: database
+    restart: always
+    ports:
+      - 3306:3306
+    environment:
+      - MYSQL_ROOT_PASSWORD=secret
+      - MYSQL_DATABASE=academunity
+    volumes:
+      - mysqldata:/var/lib/mysql
+  app:
+    build: .
+    container_name: academunity-api
+    ports:
+      - 3000:3000
+    volumes:
+      - .:/usr/app
+    links:
+      - database
+    depends_on: 
+      - database
+
+
+volumes:
+  mysqldata:
+    driver: local
