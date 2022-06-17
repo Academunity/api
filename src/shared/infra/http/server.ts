@@ -1,5 +1,4 @@
-import { app } from './app';
-console.log(process.env);
+import { app } from "./app";
 
 const port = process.env.PORT;
 

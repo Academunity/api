@@ -1,8 +1,8 @@
-import express from "express";
 import * as dotenv from "dotenv";
+import express from "express";
 
-dotenv.config({ path: './.env'})
+dotenv.config({ path: "./.env" });
 
-const app = express()
+const app = express();
 
-export { app }
+export { app };
