@@ -1,4 +1,3 @@
-import { User } from "@modules/accounts/infra/entities/User";
 import { UsersRepositoryInMemory } from "@modules/accounts/repositories/in-memory/UsersRepositoryInMemory";
 
 import { CreateUserUseCase } from "./CreateUserUseCase";

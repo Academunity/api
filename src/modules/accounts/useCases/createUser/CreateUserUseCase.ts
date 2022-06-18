@@ -1,17 +1,22 @@
 import { ICreateUserDTO } from "@modules/accounts/dtos/ICreateUserDTO";
-import { User } from "@modules/accounts/infra/entities/User";
 import { IUsersRepository } from "@modules/accounts/repositories/IUsersRepository";
+import { Users } from "@prisma/client";
 import { hash } from "bcrypt";
+import { inject, injectable } from "tsyringe";
 
+@injectable()
 class CreateUserUseCase {
-  constructor(private usersRepository: IUsersRepository) {}
+  constructor(
+    @inject("UsersRepository")
+    private usersRepository: IUsersRepository
+  ) {}
 
   async execute({
     name,
     email,
     password,
     role_id,
-  }: ICreateUserDTO): Promise<User> {
+  }: ICreateUserDTO): Promise<Users> {
     const passwordHashed = await hash(password, 8);
     const user = await this.usersRepository.create({
       name,
