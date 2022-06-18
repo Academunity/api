@@ -1,5 +1,8 @@
 interface ICreateUserDTO {
   id?: string;
+  role_id: string;
+  favorite_subject_id?: string;
+  last_question_id?: string;
   name: string;
   email: string;
   password: string;

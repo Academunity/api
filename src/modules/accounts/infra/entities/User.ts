@@ -2,6 +2,9 @@ import { v4 as uuidV4 } from "uuid";
 
 class User {
   id: string;
+  role_id: string;
+  favorite_subject_id: string;
+  last_question_id: string;
   name: string;
   email: string;
   password: string;
