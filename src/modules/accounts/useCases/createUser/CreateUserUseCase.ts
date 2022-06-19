@@ -12,6 +12,7 @@ class CreateUserUseCase {
   constructor(
     @inject("UsersRepository")
     private usersRepository: IUsersRepository,
+    @inject("RolesRepository")
     private rolesRepository: IRolesRepository
   ) {}
 

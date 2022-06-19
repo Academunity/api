@@ -18,8 +18,8 @@ class RolesRepositoryInMemory implements IRolesRepository {
     });
   }
 
-  async findById(id: string): Promise<Roles | undefined> {
-    return this.roles.find((role) => role.id === id);
+  async findById(id: string): Promise<Roles | null> {
+    return this.roles.find((role) => role.id === id) ?? null;
   }
 }
 

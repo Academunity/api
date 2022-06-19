@@ -11,7 +11,7 @@ class UsersRepository implements IUsersRepository {
     password,
     role_id,
   }: ICreateUserDTO): Promise<Users> {
-    const user = await prisma.users.create({
+    return prisma.users.create({
       data: {
         name,
         email,
@@ -19,8 +19,14 @@ class UsersRepository implements IUsersRepository {
         role_id,
       },
     });
+  }
 
-    return user;
+  async findByEmail(email: string): Promise<Users | null> {
+    return prisma.users.findUnique({
+      where: {
+        email,
+      },
+    });
   }
 }
 
