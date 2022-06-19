@@ -15,10 +15,10 @@ class UsersRepositoryInMemory implements IUsersRepository {
   }: ICreateUserDTO): Promise<Users> {
     const user: Users = {
       id: uuidV4(),
-      role_id: "DSADSADSA",
-      name: "Ruan",
-      email: "ruan@gmail.com",
-      password: "Test",
+      role_id,
+      name,
+      email,
+      password,
       created_at: new Date(),
       updated_at: new Date(),
       verified_at: null,
@@ -32,6 +32,10 @@ class UsersRepositoryInMemory implements IUsersRepository {
     this.users.push(user);
 
     return user;
+  }
+
+  async findByEmail(email: string): Promise<Users | undefined> {
+    return this.users.find((user) => user.email === email);
   }
 }
 
