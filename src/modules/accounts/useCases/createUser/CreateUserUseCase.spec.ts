@@ -2,7 +2,7 @@ import "reflect-metadata";
 import { UsersRepositoryInMemory } from "@modules/accounts/repositories/in-memory/UsersRepositoryInMemory";
 import { RolesRepositoryInMemory } from "@modules/roles/repositories/in-memory/RolesRepositoryInMemory";
 
-import { AppError } from "@shared/container/errors/AppError";
+import { AppError } from "@shared/errors/AppError";
 
 import { CreateUserUseCase } from "./CreateUserUseCase";
 

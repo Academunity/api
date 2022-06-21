@@ -5,7 +5,7 @@ import express, { NextFunction, Request, Response } from "express";
 import "express-async-errors";
 import "@shared/container";
 
-import { AppError } from "@shared/container/errors/AppError";
+import { AppError } from "@shared/errors/AppError";
 
 import { routes } from "./routes";
 
@@ -22,19 +22,6 @@ app.use(
     console.log(err);
     if (err instanceof AppError) {
       return response.status(err.statusCode).json({
-        message: err.message,
-      });
-    }
-
-    if (err instanceof Prisma.PrismaClientKnownRequestError) {
-      // The .code property can be accessed in a type-safe manner
-      return response.status(400).json({
-        message: err.message,
-      });
-    }
-
-    if (err instanceof Prisma.PrismaClientValidationError) {
-      return response.status(400).json({
         message: err.message,
       });
     }
