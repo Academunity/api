@@ -1,7 +1,7 @@
 import { ICreateUserDTO } from "@modules/accounts/dtos/ICreateUserDTO";
+import { User } from "@modules/accounts/infra/typeorm/entities/User";
 import { IUsersRepository } from "@modules/accounts/repositories/IUsersRepository";
 import { IRolesRepository } from "@modules/roles/repositories/IRolesRepository";
-import { Users } from "@prisma/client";
 import { hash } from "bcrypt";
 import { inject, injectable } from "tsyringe";
 
@@ -21,7 +21,7 @@ class CreateUserUseCase {
     email,
     password,
     role_id,
-  }: ICreateUserDTO): Promise<Users> {
+  }: ICreateUserDTO): Promise<User> {
     const userExists = await this.usersRepository.findByEmail(email);
 
     if (userExists) throw new AppError("Email is already being used");

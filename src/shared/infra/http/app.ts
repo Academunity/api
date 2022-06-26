@@ -1,5 +1,4 @@
 import "reflect-metadata";
-import { Prisma } from "@prisma/client";
 import * as dotenv from "dotenv";
 import express, { NextFunction, Request, Response } from "express";
 import "express-async-errors";

@@ -1,7 +1,7 @@
-import { Roles } from "@prisma/client";
+import { Role } from "../infra/typeorm/entities/Role";
 
 interface IRolesRepository {
-  findById(id: string): Promise<Roles | null>;
+  findById(id: string): Promise<Role>;
 }
 
 export { IRolesRepository };

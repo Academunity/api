@@ -1,9 +1,11 @@
-import { Roles } from "@prisma/client";
+import { Role } from "@modules/roles/infra/typeorm/entities/Role";
+
+import { AppError } from "@shared/errors/AppError";
 
 import { IRolesRepository } from "../IRolesRepository";
 
 class RolesRepositoryInMemory implements IRolesRepository {
-  roles: Roles[] = [];
+  roles: Role[] = [];
 
   constructor() {
     this.roles.push({
@@ -18,8 +20,11 @@ class RolesRepositoryInMemory implements IRolesRepository {
     });
   }
 
-  async findById(id: string): Promise<Roles | null> {
-    return this.roles.find((role) => role.id === id) ?? null;
+  async findById(id: string): Promise<Role> {
+    const role = this.roles.find((role) => role.id === id);
+    if (!role) throw new AppError("");
+
+    return role;
   }
 }
 
